@@ -1,0 +1,18 @@
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_python beetlebot_lidar_logger
+cd ~/ros2_ws/src/beetlebot_lidar_logger
+nano beetlebot_lidar_logger/lidar_logger.py
+chmod +x beetlebot_lidar_logger/lidar_logger.py
+nano setup.py
+entry_points={
+    'console_scripts': [
+        'lidar_logger = beetlebot_Hlidar_logger.lidar_logger:main',
+    ],
+},
+
+colcon build
+
+source ~/lyra_ws/install/setup.bash 
+
+ros2 pkg list | grep beetlebot
+
